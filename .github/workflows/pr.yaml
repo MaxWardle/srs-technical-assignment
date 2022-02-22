@@ -47,7 +47,7 @@ jobs:
         run: |
           cd srs-ta-example-app
           npm install
-          npm run test --browsers=ChromeHeadless --watch=false --code-coverage
+          npm run test
 
       # this would test a build of the api if it existed
       - name: Build Backend
