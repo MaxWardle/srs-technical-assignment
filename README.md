@@ -41,17 +41,11 @@ Security scanning tools such as Sysdig can be used to detect security threats an
 
 This is worth mentioning as it can be easy to overlook when you are dealing with highly complex systems and have many other operational tasks to think about. Having a simple reminder that your certificates will expire well in advance can give you time to prepare and put time aside to renew them. Automating parts of this process is ideal as this task will most definitely need to be repeated.
 ### 2.2 Service Level Objectives (SLO)/ Remediation Actions
+Before discussing technical solutions to improve service levels, it should be noted that user experience, and confidence can greatly be improved with frequent, honest, and informative updates on the work being done to serve them better. Communication can help users feel heard, valued and is important to maintain a good relationship. This can be ux interviews with clients, notifying of predicted downtime before it occurs, or honest status updates after an event. Defining a service level agreement can also assist in client understanding of "acceptable/ inevitable" downtime. When users are aware that services have occasional, limited downtime and that the team is taking every step to reduce this, it can help mitigate frustration.
 
-TODO: Service Level Objectives (SLO)
-  - active production environment with high user load and low tolerance for downtime
-  - prioritized reliability work
-  - what can be automated?
-  - highlight pain points
-  - change management(?)
+Additionally, on a production system with high user load, and low downtime tolerance, steps can be taken to further improve uptime by assigning a team to be on call after hours. This allows the team to be proactive as soon as an incident occurs.
 
-here's the prioritized list of reliability stuff to do, what can be automated, what can't be automated, and what's gonna suck the most.
-
-Incidents are bound to occur, so it is important that we predict them, and are prepared to respond to them immediately to mitigate downtime. Detailed runbooks should be created for each of the events described above, and automating when possible.
+Incidents are bound to occur, so it is important that we predict them, and are prepared to respond to them immediately to mitigate downtime. Detailed runbooks should be created for each of the events described above, and automating when possible. Below is a prioritized list of work to improve reliability and resiliency of the application.
 
 #### 2.2.1 Container Configuration
 This is important to handle user load efficiently. Using the metrics provided by the data collection tools described above we can adjust our configs to accurately fit user needs. This can mean adjusting cpu/ memory limits as well as setting up automated autoscaling rules to adjust for fluctuating loads.
