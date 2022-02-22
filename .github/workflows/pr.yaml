@@ -31,7 +31,6 @@ jobs:
           cd server
 
       - name: Test Frontend
-        uses: actions/setup-node@v1
         run: |
           cd srs-ta-example-app
           npm install
