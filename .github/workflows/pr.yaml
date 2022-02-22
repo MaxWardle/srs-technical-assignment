@@ -27,13 +27,15 @@ jobs:
 
       # Prettier must be in `package.json`
       - name: Install Node.js dependencies
-        run: npm ci
+        run: |
+          cd srs-ta-example-app
+          npm ci
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
           prettier: true
-          prettier_dir: ./srs-ta-example-app/
+          prettier_dir: srs-ta-example-app/
 
 
       # this would run the backend tests if they existed
