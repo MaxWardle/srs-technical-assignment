@@ -6,47 +6,55 @@ on:
       - ".github/workflows/pr.yaml"
       - ".github/workflows/merge.yaml"
       - "srs-ta-example-app/**"
-    # All pr's should be made to the dev branch in this design with the exception of hotfixes
+    # All pr's should be made to the dev branch in this design
     branches:
       - 'dev'
 
-
 jobs:
   pr:
-    name: pull request
+    name: Pull Request
     runs-on: ubuntu-latest
 
-steps:
-      - name: Check out
+    steps:
+      - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      # TODO: Implement Backend Linters
+
+      # Prettier must be in `package.json`
+      - name: Install Node.js dependencies
+        run: |
+          cd srs-ta-example-app
+          npm ci
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
           prettier: true
+          prettier_dir: srs-ta-example-app/
 
-      # this would run the backend tests if they existed
-      - name: Test Backend
-        run: |
-          cd server
+      # TODO: Implement Backend Tests
 
       - name: Test Frontend
-        uses: actions/setup-node@v1
         run: |
           cd srs-ta-example-app
           npm install
           npm run test
 
-      # this would test a build of the api if it existed
-      - name: Build Backend
-        run: |
-          cd server
+      # TODO: Implement Backend Build Test
 
       - name: Build Frontend
         run: |
           cd srs-ta-example-app
           npm install
           npm run build
+
+      # TODO: Implement Backend Image Build and Deploy
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -66,4 +74,12 @@ steps:
           push: true
           tags: maxwardle/srs-ta-example-app:pr-${{ github.event.number }}
 
-      # Here would be the final step of deploying this the "PR" docker image to a openshift container for manual inspection
+      # TODO: Implement Frontend Openshift Deployment
+
+      # TODO: Implement Backend Openshift Deployment
+
+      # TODO: Implment Test Data Generation
+
+      # TODO: Implement Migration Runner (Mongo DB and DB Migrate)
+
+      # TODO: Implement Functional Tests
