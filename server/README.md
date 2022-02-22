@@ -1,0 +1,2 @@
+###Some backend here connecting to mongodb here
+For this example I omitted this section, as no db needed for my example app. If this existed I would have some api automated tests running and maybe a section in the pipeline for running migrations. See diagram for more details.
