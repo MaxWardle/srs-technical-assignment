@@ -23,8 +23,8 @@ jobs:
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
-          prettier: true
           prettier_dir: srs-ta-example-app/
+          prettier: true
 
       # this would run the backend tests if they existed
       - name: Test Backend
