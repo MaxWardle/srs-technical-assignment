@@ -6,24 +6,26 @@ on:
       - ".github/workflows/pr.yaml"
       - ".github/workflows/merge.yaml"
       - "srs-ta-example-app/**"
-    # All pr's should be made to the dev branch in this design with the exception of hotfixes
+    # All pr's should be made to the dev branch in this design
     branches:
       - 'dev'
 
-
 jobs:
   pr:
-    name: pull request
+    name: Pull Request
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out
+      - name: Checkout
         uses: actions/checkout@v2
 
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 12
+
+      # TODO: Implement Backend Linters
+      - name: Backend Linters Placeholder
 
       # Prettier must be in `package.json`
       - name: Install Node.js dependencies
@@ -37,11 +39,8 @@ jobs:
           prettier: true
           prettier_dir: srs-ta-example-app/
 
-
-      # this would run the backend tests if they existed
+      # TODO: Implement Backend Tests
       - name: Test Backend
-        run: |
-          cd server
 
       - name: Test Frontend
         run: |
@@ -49,10 +48,8 @@ jobs:
           npm install
           npm run test
 
-      # this would test a build of the api if it existed
+      # TODO: Implement Backend Build Test
       - name: Build Backend
-        run: |
-          cd server
 
       - name: Build Frontend
         run: |
@@ -60,6 +57,8 @@ jobs:
           npm install
           npm run build
 
+      # TODO: Implement Backend Image Build and Deploy
+      - name: Backend Image Builder Placeholder
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -79,4 +78,17 @@ jobs:
           push: true
           tags: maxwardle/srs-ta-example-app:pr-${{ github.event.number }}
 
-      # Here would be the final step of deploying this the "PR" docker image to a openshift container for manual inspection
+      # TODO: Implement Frontend Openshift Deployment
+      - name: Deploy Frontend to Openshift Container Placeholder
+
+      # TODO: Implement Backend Openshift Deployment
+      - name: Deploy Backend to Openshift Container Placeholder
+
+      # TODO: Implment Test Data Generation
+      - name: Generate Test Data Placeholder
+
+      # TODO: Implement Migration Runner (Mongo DB and DB Migrate)
+      - name: Run Migrations Placeholder
+
+      # TODO: Implement Functional Tests
+      - name: Run Functional Tests Placeholder
